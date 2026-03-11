@@ -4,6 +4,12 @@ pipeline {
     tools {
         maven 'Maven3' // Make sure this matches the name in Global Tool Configuration
     }
+    
+    environment
+    {
+		DEPLOY_PATH = "C:\\apache-tomcat-10.1.52\\webapps"
+		WAR_NAME = 'jenkinsDemo.war'
+	}
 
     stages {
         stage('Checkout') {
@@ -20,13 +26,14 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy Application') {
             steps {
-                // This step requires the "Deploy to container" plugin
-                deploy adapters: [tomcat9(credentialsId: 'tomcat-admin', url: 'http://localhost:8080')], 
-                       contextPath: 'springboot-jsp-app', 
-                       war: 'target/*.war'
+                bat '''
+                copy /Y "target\\%WAR_NAME%" "%DEPLOY_PATH%\\%WAR_NAME%"
+                echo Deployment completed
+                '''
             }
+        }
         }
     }
 }
