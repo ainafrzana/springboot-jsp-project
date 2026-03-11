@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HelloController {
     @GetMapping("/welcome")
     public String welcome(Model model) {
-        model.addAttribute("message", "Hello from Spring Boot + JSP!");
+        model.addAttribute("message", "Hello from Spring Boot + JSP!123");
         return "hello"; // This maps to hello.jsp
     }
 }
