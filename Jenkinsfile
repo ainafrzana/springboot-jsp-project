@@ -7,7 +7,7 @@ pipeline {
     
     environment
     {
-		DEPLOY_PATH = "C:\\apache-tomcat-10.1.52\\webapps"
+		DEPLOY_PATH = "C:\\Users\\APU\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\webapps"
 		WAR_NAME = 'jenkinsDemo.war'
 	}
 
